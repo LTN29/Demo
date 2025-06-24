@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Thêm/Sửa Tác Giả</title>
+</head>
+<body>
+	<h2 th:text="${author.id != null ? 'Sửa' : 'Thêm'} + ' tác giả'"></h2>
+	<form
+		th:action="${author.id == null} ? @{/author/save} : @{'/author/update/' + ${author.id}}"
+		th:object="${author}" method="post" enctype="multipart/form-data">
+		<label>Tên tác giả:</label> <input type="text" th:field="*{name}"
+			required /><br> <label>Thông tin:</label> <input type="text"
+			th:field="*{information}" /><br> <label>Ảnh đại diện:</label> <input
+			type="file" name="file" /><br>
+		<div th:if="*{image}">
+			<img th:src="@{'/uploads/' + *{image}}" width="100" />
+		</div>
+		<button type="submit">Lưu</button>
+	</form>
+
+	<a href="/author/list">Quay lại danh sách</a>
+</body>
+</html>

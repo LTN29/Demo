@@ -8,26 +8,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name ="tbl_author")
+@Table(name = "tbl_author")
 public class Author {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+	@Column(name = "_id")
+	private Integer id;
+
 	@Column(name = "_name")
 	private String name;
-	
+
 	@Column(name = "_information")
 	private String information;
-	
-	@Column(name ="_image")
+
+	@Column(name = "_image")
 	private String image;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -55,7 +56,7 @@ public class Author {
 		this.image = image;
 	}
 
-	public Author(int id, String name, String information, String image) {
+	public Author(Integer id, String name, String information, String image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,6 +67,5 @@ public class Author {
 	public Author() {
 		super();
 	}
-	
-	
+
 }
